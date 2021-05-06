@@ -26,6 +26,13 @@ Builds the app for production to the `build` folder.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ```
 
+## Bonus :)
+I included a dockerfile for building the frontend. It uses nginx and I fixed the nginx config to make it run on port 8181. You'll need to map the port 8181 to something when you run it.
+
+```
+docker run --rm -p 8181:8181 samples/rpssl-frontend:0.1.1
+```
+
 ## Credits
 To Maximilian Schwarzmuller: https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25595350?start=0#overview
 I borrowed the css in the tutorial and ideas aplenty.
@@ -33,6 +40,6 @@ I borrowed the css in the tutorial and ideas aplenty.
 ## Developer notes
 Yea, there are many rooms for improvement, for one, the UI is not exactly that much greater than the old one :). The following are great to have:
 
-1. I duplicated a bit of functionalities, because I decided the code was not big enough to worry too much about state management, bad :|.
+1. I duplicated a bit of functionalities, refactoring and state management will help :|.
 1. Updating multi-player screens can make great use of websockets.
 1. Oh, that UI again :)
