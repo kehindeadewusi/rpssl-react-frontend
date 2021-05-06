@@ -1,21 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
+import GameStatus from '../components/Multi/GameStatus/GameStatus';
+import NewGame from '../components/Multi/NewGame/NewGame';
+import CompleteGame from '../components/Multi/CompleteGame/CompleteGame';
 
-class Multiplay extends Component{
-    state = {
-        loaded:false
-    };
+const MultiPlay = props=> (
+    <div>
+        <p>Multi-player interface.</p>
+        <div><GameStatus/></div>
+        <div><NewGame/></div>
+        <div><CompleteGame/></div>
+    </div>
+)
 
-    componentDidMount(){
-
-    }
-
-    render(){
-        return (
-            <div>
-                <p>Multiplayer interface.</p>
-            </div>
-        );
-    }
-}
-
-export default Multiplay;
+export default MultiPlay;

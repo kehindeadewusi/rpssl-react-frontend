@@ -1,0 +1,17 @@
+.NewGame{
+    padding: 15px 5px;
+    margin: 20px auto;
+    width: 700px;
+    border: 1px solid #ccc;
+}
+
+.NewGame ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding: 20px;
+}
+
+.NewGame ul li {
+    margin: 5px;
+  }

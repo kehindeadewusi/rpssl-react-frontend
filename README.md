@@ -6,7 +6,7 @@ Note: This code uses react@17 and is tested OK on Node v14.
 ```
 
 ## Connecting to the API
-The code is currently hardcoded to point at http://localhost:8081. This should be updated.
+The API URL must be provided in the **API URL** input at all time, it defaults to  `http://localhost:8081`. Point this at the URL of the golang API.
 
 ## Running the app
 

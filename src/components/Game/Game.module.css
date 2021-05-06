@@ -8,6 +8,11 @@
     font-size: 1.2rem;
 }
 
+.Game span{
+    font-size: large;
+    font-weight: bold;
+}
+
 @media(min-width:1000px) and (min-height:750px){
     .Game{
         width: 750px;

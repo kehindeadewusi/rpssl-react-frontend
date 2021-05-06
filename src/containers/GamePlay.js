@@ -3,26 +3,53 @@ import Modal from '../components/UI/Modal/Modal';
 import ApiLink from '../components/Common/ApiLink/ApiLink';
 import Game from '../components/Game/Game';
 import RandomControl from '../components/Game/RandomControl/RandomControl';
+import axios from 'axios';
 
 const GamePlay = props => {
-    const [doing, setDoing] = useState(false);
-    const choices = [
-        {id: 1, name:"Rock"},
-        {id: 2, name:"Paper"},
-        {id: 3, name:"Scissors"},
-        {id: 4, name:"Spock"},
-        {id: 5, name:"Lizard"}
-    ]
+    const [api, setApi] = useState("http://localhost:8081");
+    const [rand, setRand] = useState({id:"0", name:""});
+    const [choices, setChoices] = useState([]);
+    const [playMsg, setPlayMsg] = useState({computer:0, player:0, results:""});
 
-    const choiceHandler= ()=> {
-        
+    const [kv, setKv] = useState({}); 
+
+    const apiChangeHandler= (e)=> {
+        console.log(api)
+        setApi(e.target.value);
     }
 
-    const modalCancelHandler= ()=> {
-        setDoing(false);
+    const modalCancelHandler = ()=> {
     }
 
-    let apiLink = <ApiLink/>;
+    const loadChoicesHandler = () => {
+        axios.get(api+"/choices")
+            .then(response =>{
+                setChoices(response.data);
+                let arr = response.data
+                let m = arr.reduce(function(map, obj) {
+                    map[obj.id] = obj.name;
+                    return map;
+                }, {});
+                setKv(m);
+            });
+    }
+
+    const playHandler = (id) => {
+        let data = {player: id }
+
+        axios.post(api+"/play", data)
+            .then(response =>{
+                setPlayMsg(response.data);
+            });
+    }
+
+    const getRandomChoice = ()=>{
+        axios.get(api+"/choice")
+            .then(response =>{
+                setRand(response.data);
+            });
+    }
+
     let somethingInModal = null;
 
     let burger = <p>A burger</p>;
@@ -32,11 +59,11 @@ const GamePlay = props => {
             <Modal show={false} modalClosed={modalCancelHandler}>
                 {somethingInModal}
             </Modal>
-            <div>{apiLink}</div>
+            <div><ApiLink api={api} apiChange={apiChangeHandler}/></div>
             <div>
-                <Game choices={choices}/>
+                <Game choices={choices} playMsg={playMsg} kv={kv} gamePlayed={playHandler} load={loadChoicesHandler}/>
             </div>
-            <div><RandomControl/></div>
+            <div><RandomControl val={rand} randClick={getRandomChoice}/></div>
         </React.Fragment>
     );
 }
