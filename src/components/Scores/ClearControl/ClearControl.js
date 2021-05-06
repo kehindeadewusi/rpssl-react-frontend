@@ -4,7 +4,7 @@ const ClearControl = (props)=>(
     <div>
         <button 
             className={style.ClearControl} 
-            onClick={props.cleared}
+            onClick={props.clear}
             >
                 "Clear Scoreboard"
         </button>

@@ -1,32 +1,28 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React from 'react';
 import ScoreItem from './DisplayItem/DisplayItem';
+import style from './Display.module.css';
 
-class Display extends Component{
-    state = {
-        scores: []
-    };
-
-    componentDidMount(){
-        axios.get('http://127.0.0.1:8081/scoreboard')
-            .then(response =>{
-                this.setState({scores:response.data});
-            });
+const Display = props => {
+    let scores = null;
+    if(props.scores){
+        scores = props.scores.map((score, index)=>{
+            return <ScoreItem id={index} player1={score.player1} player2={score.player2} player_1_choice={score.player_1_choice} player_2_choice={score.player_2_choice} winner={score.winner} />
+        });
     }
-
-    render(){
-        let scores = null
-        if(this.state.scores){
-            scores = this.state.scores.map((score, index)=>{
-                return <ScoreItem id={index} player1={score.player1} player2={score.player2} player_1_choice={score.player_1_choice} player_2_choice={score.player_2_choice} winner={score.winner} />
-            });
-        }
-        return (
-            <table>
-                {scores}
-            </table>
-        );
-    }
+        
+    return (
+        <table className={style.Display}>
+            <tr><td colSpan="5">Scoreboard</td></tr>
+            <tr>
+                <td>Player 1</td>
+                <td>Player 2</td>
+                <td>Player 1 Selection</td>
+                <td>Player 2 Selection</td>
+                <td>Winner</td>
+            </tr>
+            {scores}
+        </table>
+    );
 }
 
 export default Display;

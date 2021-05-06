@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Modal from '../components/UI/Modal/Modal';
 import ApiLink from '../components/Common/ApiLink/ApiLink';
 import Game from '../components/Game/Game';
@@ -14,7 +14,6 @@ const GamePlay = props => {
     const [kv, setKv] = useState({}); 
 
     const apiChangeHandler= (e)=> {
-        console.log(api)
         setApi(e.target.value);
     }
 
