@@ -5,7 +5,8 @@ const Game = (props) => {
     let choices = props.choices.map((c, index) =>{
             return <Choice id={c.id} key={c.id} choiceClicked={()=>props.gamePlayed(c.id)} name={c.name}/>
         }
-    )
+    );
+    
     let sp = null;
     if(props.playMsg && props.playMsg.results){
         const kv = props.kv;

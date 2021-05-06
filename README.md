@@ -30,3 +30,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 To Maximilian Schwarzmuller: https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25595350?start=0#overview
 I borrowed the css in the tutorial and ideas aplenty.
 
+## Developer notes
+Yea, there are many rooms for improvement, for one, the UI is not exactly that much greater than the old one :). The following are great to have:
+
+1. I duplicated a bit of functionalities, because I decided the code was not big enough to worry too much about state management, bad :|.
+1. Updating multi-player screens can make great use of websockets.
+1. Oh, that UI again :)
